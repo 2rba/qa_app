@@ -1,0 +1,20 @@
+<div class="mx-auto md:w-2/3 w-full flex">
+  <div class="mx-auto">
+    <% if notice.present? %>
+      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+    <% end %>
+    <h1 class="text-2xl font-medium">Question</h1>
+    <%= render @question %>
+
+    <div class="mt-5">
+      <h2 class="text-2xl font-medium">Answers</h2>
+      <%= render @question.ordered_answers %>
+    </div>
+
+    <div class="mt-5">
+      <h2 class="text-2xl font-medium">Add an answer</h2>
+      <%= render 'answers/form', answer: Answer.new(question: @question) %>
+    </div>
+    <%= link_to 'Back to questions', questions_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  </div>
+</div>
